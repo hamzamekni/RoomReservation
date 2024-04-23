@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Room</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Add a New Room</h2>
+        <form action="/addRoom" method="POST">
+            <div class="form-group">
+                <label for="capacity">Capacity:</label>
+                <input type="number" class="form-control" id="capacity" name="capacity" required>
+            </div>
+            <div class="form-group">
+                <label for="availablity">Room availability:</label>
+                <input type="checkbox" class="form-control-file" id="availablity" name="availability">
+            </div>
+            <div id="equipmentInputs">
+                <div class="equipment-input">
+                    <div class="form-group">
+                        <label for="equipmentName">Equipment Name:</label>
+                        <input type="text" class="form-control" name="equipments[0][name]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="equipmentQuantity">Quantity:</label>
+                        <input type="number" class="form-control" name="equipments[0][quantity]" required>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn btn-secondary" id="addEquipment">Add Equipment</button>
+            <button type="submit" class="btn btn-primary">Add Room</button>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            let equipmentCount = 1;
+
+            $('#addEquipment').click(function() {
+                const newEquipmentInput = `
+                <div class="equipment-input">
+                    <div class="form-group">
+                        <label for="equipmentName">Equipment Name:</label>
+                        <input type="text" class="form-control" name="equipments[${equipmentCount}][name]" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="equipmentQuantity">Quantity:</label>
+                        <input type="number" class="form-control" name="equipments[${equipmentCount}][quantity]" required>
+                    </div>
+                </div>`;
+                $('#equipmentInputs').append(newEquipmentInput);
+                equipmentCount++;
+            });
+        });
+    </script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>

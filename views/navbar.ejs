@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg">
+    <div class="container">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <a class="navbar-brand" href="http://localhost:4000/index">
+            <strong><span>Booking</span> </strong>
+        </a>
+
+        <div class="d-lg-none">
+            <a href="http://localhost:4000/signin" class="bi-person custom-icon me-3"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" href="http://localhost:4000/index">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="http://localhost:4000/rooms">Rooms</a>
+                </li>
+
+                <li class="nav-item">
+                    <% if(loggedIn){ %>
+                        <a class="nav-link" href="http://localhost:4000/reservationf">Reservation</a>
+                        <% } else{ %>
+                            <a class="nav-link" href="http://localhost:4000/signin">Reservation</a>
+                            <% } %>
+
+                </li>
+                <li class="nav-item">
+                    <% if(loggedIn){ %>
+                        <a class="nav-link" href="http://localhost:4000/reservations">My Books</a>
+                        <% } %>
+
+                </li>
+            </ul>
+
+            <div class="d-none d-lg-block">
+                <% if(loggedIn){ %>
+                    <a href="http://localhost:4000/logout" class="bi-box-arrow-right custom-icon me-3"></a>
+                    <% } else{ %> 
+                        <a href="http://localhost:4000/signin" class="bi-person custom-icon me-3"></a> 
+                 <% } %>
+
+            </div>
+        </div>
+    </div>
+</nav>
